@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 
 import Nav from 'react-bootstrap/Nav';
@@ -11,6 +11,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import FormControl from 'react-bootstrap/FormControl';
 
 import Scrollbars from './utils/scroll'
+import ErrorPage from './utils/404'
 
 import Maths from './components/math/'
 import Content from './components/content'
@@ -82,10 +83,13 @@ class AppContent extends React.Component{
             </Form>
           </Navbar>
           <Scrollbars autoHide autoHeight autoHeightMin={`calc(100vh - 56px)`}>
+            <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/home" component={HomePage} />
             <Route path="/maths" component={MathPage} />
             <Route path="/about" component={About} />
+            <Route component={ErrorPage} />
+            </Switch>
           </Scrollbars>
         </Router>
       </div>
